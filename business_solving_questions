@@ -1,0 +1,67 @@
+# HVAC Maintenance & Energy Analytics SQL Project
+
+## Project Overview
+
+This repository contains a comprehensive SQL-based analytical framework designed to evaluate HVAC operational efficiency, track maintenance expenses, optimize workforce allocation, and uncover seasonal cost patterns. 
+
+By transforming raw maintenance and utility logs into structured business intelligence, this project directly addresses core operational challenges: controlling capital expenditures, identifying defective hardware assets, and measuring resource performance.
+
+---
+
+## Key Business Insights & Analytical Framework
+
+### 📊 Phase 1: Financial & Operational Overview
+
+*Established baseline metrics to quantify structural overhead and operational volume.*
+
+* **Total Maintenance Capital Expenditure:** Evaluated the overall historical direct financial spend across all recorded service events.
+* **Volume of Operations:** Quantified the exact number of successfully fulfilled and closed service engagements to date.
+* **Workforce Capacity Distribution:** Mapped out how completed work orders are distributed among active field technicians.
+* **High-Liability Asset Outliers:** Isolated the top 5 most expensive individual repair jobs to flag critical equipment failures.
+* **Utility Footprint Baseline:** Aggregated cumulative energy consumption (kWh) across documented service intervals to assess environmental overhead.
+
+### 📈 Phase 2: Asset & Customer Segmentation
+
+*Segmented accounts and hardware inventory to pinpoint high-cost drivers.*
+
+* **Lifetime Account Value & Cost:** Calculated the aggregate maintenance spend of each customer across their properties.
+* **Manufacturer Hardware Liability:** Identified which specific HVAC equipment brand generates the highest total maintenance and repair costs.
+* **Standard Cost Baseline:** Determined the true statistical average cost of a standard repair job to benchmark future service quotes.
+* **Market Segment Analysis:** Compared aggregate expenditures between **Commercial** and **Residential** accounts to determine where service liabilities lie.
+* **Key Account Isolation:** Highlighted the top 3 high-value, high-frequency customer accounts driving service volume.
+
+### 🛠️ Phase 3: Resource Performance & Asset Lifecycle
+
+*Analyzed technician productivity and evaluated the physical lifecycle of hardware assets.*
+
+* **Revenue Generation by Resource:** Ranked technicians across the organization based on the cumulative dollar value of repairs they completed.
+* **Hardware Degradation Alerts:** Isolated specific HVAC units exhibiting severe operational inefficiency by exceeding 3,000 kWh in cumulative energy consumption.
+* **Asset Longevity & Wear:** Measured the exact operational lifespan of units by calculating the duration between their initial service date and latest maintenance check.
+* **Account Volatility (Churn/Failure Risk):** Flagged high-liability customers requiring intensive maintenance, defined as accounts with more than 2 distinct service visits.
+* **Brand Specialists:** Identified the top-performing technician (measured by revenue) for each respective HVAC manufacturer.
+* **Peak Resource Liability:** Uncovered the single highest-value, maximum-complexity repair job executed by each individual technician.
+
+### 📉 Phase 4: Advanced Time-Series & Financial Intelligence
+
+*Leveraged window functions and CTEs to perform sophisticated trend analysis and seasonal forecasting.*
+
+* **Seasonality Volumes:** Discovered month-by-month distribution profiles of service jobs throughout the fiscal year.
+* **Anomaly Detection:** Outlined customers whose cumulative maintenance spend drastically exceeds the true population average of all accounts.
+* **Cumulative Cash Flow Run-Rate:** Computed the chronological running total of repair expenditures month-over-month to view cash outflows.
+* **Market Share Maintenance Spend:** Measured the exact percentage contribution of each HVAC brand to the total corporate maintenance budget.
+* **Velocity Metrics (MoM Growth):** Built a financial tracking mechanism calculating Month-over-Month (MoM) spending growth or reduction percentages.
+* **Chronological Customer Journeys:** Mapped out the exact historical service timeline sequentially for every unique customer.
+* **Brand Depreciation Rankings:** Utilized dense ranking methodologies to evaluate HVAC manufacturers by their total cost burden.
+* **Predictive Baselines:** Layered current monthly maintenance liabilities against subsequent month trends using lead/lag indicators.
+* **Peak Financial Volatility:** Pinpointed the exact month that experienced the sharpest, most aggressive financial spike in repair costs over the prior period.
+
+---
+
+## Schema & Query Architecture
+
+The codebase leverages modern ANSI SQL standards, featuring:
+
+* **Multi-table Joins** (`INNER JOIN` with explicit `USING` clauses) across customer, unit, and service record tables.
+* **Aggregation & Filtering** via complex `GROUP BY` rollups and `HAVING` filters.
+* **Advanced Window Functions** (`RANK()`, `DENSE_RANK()`, `ROW_NUMBER()`, `LAG()`, `LEAD()`, and `SUM() OVER()`) for longitudinal time-series data and partitioning.
+* **Common Table Expressions (CTEs)** to isolate data subsets, improve readability, and perform multi-stage calculations.
